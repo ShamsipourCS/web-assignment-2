@@ -7,11 +7,11 @@ namespace web_assignment_2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CourseController : ControllerBase
+    public class CoursesController : ControllerBase
     {
         private readonly SchoolContext _context;
 
-        public CourseController(SchoolContext context)
+        public CoursesController(SchoolContext context)
         {
             _context = context;
         }
