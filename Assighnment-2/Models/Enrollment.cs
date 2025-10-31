@@ -10,9 +10,11 @@ public class Enrollment
 {
     public int Id { get; set; }
 
+    [Required]
     public DateTime EnrollDate { get; set; }
 
     [Column(TypeName = "decimal(5,2)")]
+    [Range(0, 100, ErrorMessage = "Grade must be between 0 and 100")]
     public decimal Grade { get; set; }
 
     // Foreign key to Student

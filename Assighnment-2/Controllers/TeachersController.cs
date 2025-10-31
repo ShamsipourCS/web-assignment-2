@@ -9,7 +9,7 @@ namespace web_assignment_2.Controllers
     [Route("api/[controller]")]
     public class TeachersController:ControllerBase
     {
-        private readonly SchoolContext? _context;
+        private readonly SchoolContext _context;
 
         public TeachersController(SchoolContext context)
         {
@@ -42,6 +42,9 @@ namespace web_assignment_2.Controllers
         [HttpPost]
         public async Task<ActionResult<Teachers>> CreateTeacher(Teachers teacher)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             if (teacher == null)
                 return BadRequest(new { message = "Invalid teacher data." });
 
@@ -58,6 +61,9 @@ namespace web_assignment_2.Controllers
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateTeacher(int id, Teachers updatedTeacher)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             if (id != updatedTeacher.Id)
                 return BadRequest(new { message = "ID mismatch." });
 

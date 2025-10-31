@@ -10,13 +10,15 @@ public class Courses
 {
     public int Id { get; set; }
 
-    [Required]
-    [MaxLength(200)]
+    [Required(ErrorMessage = "Course title is required")]
+    [MaxLength(200, ErrorMessage = "Title cannot exceed 200 characters")]
+    [MinLength(3, ErrorMessage = "Title must be at least 3 characters")]
     public string Title { get; set; } = string.Empty;
 
-    [MaxLength(1000)]
+    [MaxLength(1000, ErrorMessage = "Description cannot exceed 1000 characters")]
     public string? Description { get; set; }
 
+    [Required(ErrorMessage = "Start date is required")]
     public DateTime StartDate { get; set; }
 
     // Foreign key to Teacher
